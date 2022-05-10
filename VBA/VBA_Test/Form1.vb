@@ -75,13 +75,29 @@ Public Class Form1
     End Function
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Filter.TextChanged
-        Dim lines() As String = IO.File.ReadAllLines(file_path.text).Where(Function(s) s.StartsWith(TextBox_Filter.Text)).ToArray
+        Dim lines() As String = IO.File.ReadAllLines(file_path.Text).ToArray
 
         DataGridView1.Rows.Clear()
 
         For Each line As String In lines
             If Not line.Split(",")(0).Equals("Code") Then
-                DataGridView1.Rows.Add(line.Split(","c))
+                If Not TextBox_Filter.Text.Equals("") Then
+                    If Integer.TryParse(TextBox_Filter.Text, New Integer) < 0 Then
+                        Dim num As VariantType = Integer.Parse(line.Split(",")(0))
+                        Dim value As VariantType = Integer.Parse(TextBox_Filter.Text)
+                        Dim booleanTR As VariantType = Integer.Parse(line.Split(",")(0)) = Integer.Parse(TextBox_Filter.Text)
+                        Dim booleanNum As VariantType = line.Split(",")(1).Contains(TextBox_Filter.Text)
+                        If Integer.Parse(line.Split(",")(0)) = Integer.Parse(TextBox_Filter.Text) Then
+                            DataGridView1.Rows.Add(line.Split(","c))
+                        End If
+                    Else
+                        If line.Split(",")(1).Contains(TextBox_Filter.Text) Then
+                            DataGridView1.Rows.Add(line.Split(","c))
+                        End If
+                    End If
+                Else
+                    DataGridView1.Rows.Add(line.Split(","c))
+                End If
             End If
         Next
     End Sub
