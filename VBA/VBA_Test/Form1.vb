@@ -29,10 +29,8 @@ Public Class Form1
     End Sub
 
     Private Sub addElements(Code As String, Name As String, Birth As DateTime, Email As String, Address As String)
-        If Not isEmail(Email) Then
+        If Not isEmail(Email.Trim) Then
             MsgBox("Email is not on the correct format")
-        ElseIf Not IsValidDate(Birth) Then
-            MsgBox("Date is not on the correct format")
         ElseIf Name = "" Then
             MsgBox("You dont have name? Please complete the name field")
         Else
@@ -68,17 +66,11 @@ Public Class Form1
     End Sub
 
     Function isEmail(ByVal email As String) As Boolean
-        Static emailRegex As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
-        Return emailRegex.IsMatch(email)
+        'Static emailRegex As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
+        'Dim isMail As Boolean = emailRegex.IsMatch(email)
+        Dim regex As Regex = New Regex("^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")
+        Dim isValid As Boolean = regex.IsMatch(email)
+        Return regex.IsMatch(email)
     End Function
 
-    Public Function IsValidDate(ByVal dateString As String) As Boolean
-        'This should not be checked, since the datePicker already is on the requiered format 
-        Try
-            DateTime.ParseExact(dateString, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)
-            Return True
-        Catch ex As FormatException
-            Return False
-        End Try
-    End Function
 End Class
