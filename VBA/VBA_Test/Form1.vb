@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
+Imports System.Data
 
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -73,4 +74,15 @@ Public Class Form1
         Return regex.IsMatch(email)
     End Function
 
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Filter.TextChanged
+        Dim lines() As String = IO.File.ReadAllLines(file_path.text).Where(Function(s) s.StartsWith(TextBox_Filter.Text)).ToArray
+
+        DataGridView1.Rows.Clear()
+
+        For Each line As String In lines
+            If Not line.Split(",")(0).Equals("Code") Then
+                DataGridView1.Rows.Add(line.Split(","c))
+            End If
+        Next
+    End Sub
 End Class

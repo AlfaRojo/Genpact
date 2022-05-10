@@ -36,7 +36,7 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox_Filter = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -64,9 +64,12 @@ Partial Class Form1
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(12, 41)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 25
         Me.DataGridView1.Size = New System.Drawing.Size(674, 387)
         Me.DataGridView1.TabIndex = 2
@@ -84,6 +87,7 @@ Partial Class Form1
         '
         Me.TextBox_Name.Location = New System.Drawing.Point(786, 41)
         Me.TextBox_Name.Name = "TextBox_Name"
+        Me.TextBox_Name.PlaceholderText = "Jose"
         Me.TextBox_Name.Size = New System.Drawing.Size(151, 23)
         Me.TextBox_Name.TabIndex = 4
         '
@@ -103,6 +107,7 @@ Partial Class Form1
         '
         Me.TextBox_Email.Location = New System.Drawing.Point(786, 99)
         Me.TextBox_Email.Name = "TextBox_Email"
+        Me.TextBox_Email.PlaceholderText = "aa@aa.com"
         Me.TextBox_Email.Size = New System.Drawing.Size(151, 23)
         Me.TextBox_Email.TabIndex = 6
         '
@@ -158,12 +163,12 @@ Partial Class Form1
         Me.Label5.TabIndex = 12
         Me.Label5.Text = "Buscar"
         '
-        'TextBox1
+        'TextBox_Filter
         '
-        Me.TextBox1.Location = New System.Drawing.Point(837, 225)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 23)
-        Me.TextBox1.TabIndex = 13
+        Me.TextBox_Filter.Location = New System.Drawing.Point(837, 225)
+        Me.TextBox_Filter.Name = "TextBox_Filter"
+        Me.TextBox_Filter.Size = New System.Drawing.Size(100, 23)
+        Me.TextBox_Filter.TabIndex = 13
         '
         'Button3
         '
@@ -180,7 +185,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(949, 475)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TextBox_Filter)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -217,6 +222,6 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox_Filter As TextBox
     Friend WithEvents Button3 As Button
 End Class
