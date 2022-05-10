@@ -12,6 +12,8 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Using ofd As OpenFileDialog = New OpenFileDialog()
             If ofd.ShowDialog() = DialogResult.OK Then
+                DataGridView1.Rows.Clear()
+                DataGridView1.Columns.Clear()
                 enable_Elements()
                 file_path.Text = ofd.FileName
                 Dim lines As List(Of String) = File.ReadAllLines(ofd.FileName).ToList()
@@ -43,10 +45,11 @@ Public Class Form1
         TextBox_Name.Enabled = True
         date_of_Birth.Enabled = True
         exportBtn.Enabled = True
+        addBtn.Enabled = True
     End Sub
 
     Private Sub addElements(Code As String, Name As String, Birth As DateTime, Email As String, Address As String)
-        If Not isEmail(Email.Trim) Then
+        If Not isEmail(Email.Trim) And isEmail(Email.Trim).Equals("") Then
             MsgBox("Email is not on the correct format")
         ElseIf Name = "" Then
             MsgBox("You dont have name? Please complete the name field")
@@ -72,14 +75,25 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles addBtn.Click
         addElements(
-            (DataGridView1.Rows.Count - 1).ToString,
+            (DataGridView1.Rows.Count).ToString,
             TextBox_Name.Text,
             date_of_Birth.Value,
             TextBox_Email.Text,
             TextBox_Address.Text
         )
+        Using fileWriter As New System.IO.StreamWriter(file_path.Text, True)
+            fileWriter.WriteLineAsync(String.Join(
+                ",",
+                (DataGridView1.Rows.Count - 1),
+                TextBox_Name.Text,
+                date_of_Birth.Value,
+                TextBox_Email.Text,
+                TextBox_Address.Text
+            ))
+        End Using 'This close the file once is done
+
     End Sub
 
     Function isEmail(ByVal email As String) As Boolean

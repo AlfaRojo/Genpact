@@ -64,7 +64,9 @@
         End If
         If exportList.Count > 0 Then
             export_CSV(exportList)
-            MsgBox("Saved!")
+            MsgBox(exportList.Count.ToString + " elements saved!")
+        Else
+            MsgBox("No records to save")
         End If
     End Sub
 
@@ -75,12 +77,12 @@
     Private Sub export_CSV(list As List(Of String))
         SaveFileDialog1.Filter = "All files (*.*)|*.csv"
         If SaveFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
-            Dim fileWriter As New System.IO.StreamWriter(SaveFileDialog1.FileName, True)
-            fileWriter.WriteLine(get_First_Line)
-            For Each line In list
-                fileWriter.WriteLine(line)
-            Next
-            fileWriter.Close()
+            Using fileWriter As New System.IO.StreamWriter(SaveFileDialog1.FileName, True)
+                fileWriter.WriteLine(get_First_Line)
+                For Each line In list
+                    fileWriter.WriteLine(line)
+                Next
+            End Using
         End If
 
     End Sub

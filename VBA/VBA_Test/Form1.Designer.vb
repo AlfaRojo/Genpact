@@ -26,7 +26,7 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.file_path = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.addBtn = New System.Windows.Forms.Button()
         Me.TextBox_Name = New System.Windows.Forms.TextBox()
         Me.date_of_Birth = New System.Windows.Forms.DateTimePicker()
         Me.TextBox_Email = New System.Windows.Forms.TextBox()
@@ -74,15 +74,15 @@ Partial Class Form1
         Me.DataGridView1.Size = New System.Drawing.Size(674, 387)
         Me.DataGridView1.TabIndex = 2
         '
-        'Button2
+        'addBtn
         '
-        Me.Button2.Enabled = False
-        Me.Button2.Location = New System.Drawing.Point(862, 157)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Add"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.addBtn.Enabled = False
+        Me.addBtn.Location = New System.Drawing.Point(862, 157)
+        Me.addBtn.Name = "addBtn"
+        Me.addBtn.Size = New System.Drawing.Size(75, 23)
+        Me.addBtn.TabIndex = 3
+        Me.addBtn.Text = "Add"
+        Me.addBtn.UseVisualStyleBackColor = True
         '
         'TextBox_Name
         '
@@ -207,7 +207,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox_Email)
         Me.Controls.Add(Me.date_of_Birth)
         Me.Controls.Add(Me.TextBox_Name)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.addBtn)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.file_path)
         Me.Controls.Add(Me.Button1)
@@ -224,7 +224,7 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents file_path As Label
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Button2 As Button
+    Friend WithEvents addBtn As Button
     Friend WithEvents TextBox_Name As TextBox
     Friend WithEvents date_of_Birth As DateTimePicker
     Friend WithEvents TextBox_Email As TextBox
