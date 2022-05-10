@@ -6,11 +6,13 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         date_of_Birth.Format = DateTimePickerFormat.Custom
         date_of_Birth.CustomFormat = "MM/dd/yyyy"
+        date_of_Birth.MaxDate = DateTime.Today
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Using ofd As OpenFileDialog = New OpenFileDialog()
             If ofd.ShowDialog() = DialogResult.OK Then
+                enable_Elements()
                 file_path.Text = ofd.FileName
                 Dim lines As List(Of String) = File.ReadAllLines(ofd.FileName).ToList()
                 Dim list As List(Of User) = New List(Of User)
@@ -27,6 +29,20 @@ Public Class Form1
                 Next
             End If
         End Using
+    End Sub
+
+    Private Sub enable_Elements()
+        lbl_Name.Enabled = True
+        lbl_Birth.Enabled = True
+        lbl_Email.Enabled = True
+        lbl_Address.Enabled = True
+        lbl_Search.Enabled = True
+        TextBox_Address.Enabled = True
+        TextBox_Email.Enabled = True
+        TextBox_Filter.Enabled = True
+        TextBox_Name.Enabled = True
+        date_of_Birth.Enabled = True
+        exportBtn.Enabled = True
     End Sub
 
     Private Sub addElements(Code As String, Name As String, Birth As DateTime, Email As String, Address As String)
@@ -98,7 +114,7 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles exportBtn.Click
         Dim exportForm = New Export()
         exportForm.Tag = file_path.Text
         exportForm.Show()

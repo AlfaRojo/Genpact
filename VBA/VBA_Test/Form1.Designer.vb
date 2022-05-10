@@ -31,13 +31,13 @@ Partial Class Form1
         Me.date_of_Birth = New System.Windows.Forms.DateTimePicker()
         Me.TextBox_Email = New System.Windows.Forms.TextBox()
         Me.TextBox_Address = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lbl_Name = New System.Windows.Forms.Label()
+        Me.lbl_Birth = New System.Windows.Forms.Label()
+        Me.lbl_Email = New System.Windows.Forms.Label()
+        Me.lbl_Address = New System.Windows.Forms.Label()
+        Me.lbl_Search = New System.Windows.Forms.Label()
         Me.TextBox_Filter = New System.Windows.Forms.TextBox()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.exportBtn = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -76,6 +76,7 @@ Partial Class Form1
         '
         'Button2
         '
+        Me.Button2.Enabled = False
         Me.Button2.Location = New System.Drawing.Point(862, 157)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
@@ -85,6 +86,7 @@ Partial Class Form1
         '
         'TextBox_Name
         '
+        Me.TextBox_Name.Enabled = False
         Me.TextBox_Name.Location = New System.Drawing.Point(786, 41)
         Me.TextBox_Name.Name = "TextBox_Name"
         Me.TextBox_Name.PlaceholderText = "Jose"
@@ -94,6 +96,7 @@ Partial Class Form1
         'date_of_Birth
         '
         Me.date_of_Birth.CustomFormat = "MM/dd/yyyy"
+        Me.date_of_Birth.Enabled = False
         Me.date_of_Birth.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.date_of_Birth.Location = New System.Drawing.Point(786, 70)
         Me.date_of_Birth.MaxDate = New Date(2022, 5, 9, 0, 0, 0, 0)
@@ -105,6 +108,7 @@ Partial Class Form1
         '
         'TextBox_Email
         '
+        Me.TextBox_Email.Enabled = False
         Me.TextBox_Email.Location = New System.Drawing.Point(786, 99)
         Me.TextBox_Email.Name = "TextBox_Email"
         Me.TextBox_Email.PlaceholderText = "aa@aa.com"
@@ -113,84 +117,92 @@ Partial Class Form1
         '
         'TextBox_Address
         '
+        Me.TextBox_Address.Enabled = False
         Me.TextBox_Address.Location = New System.Drawing.Point(786, 128)
         Me.TextBox_Address.Name = "TextBox_Address"
         Me.TextBox_Address.Size = New System.Drawing.Size(151, 23)
         Me.TextBox_Address.TabIndex = 7
         '
-        'Label1
+        'lbl_Name
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(692, 41)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(39, 15)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Name"
+        Me.lbl_Name.AutoSize = True
+        Me.lbl_Name.Enabled = False
+        Me.lbl_Name.Location = New System.Drawing.Point(692, 41)
+        Me.lbl_Name.Name = "lbl_Name"
+        Me.lbl_Name.Size = New System.Drawing.Size(39, 15)
+        Me.lbl_Name.TabIndex = 8
+        Me.lbl_Name.Text = "Name"
         '
-        'Label2
+        'lbl_Birth
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(692, 70)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(73, 15)
-        Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Date of Birth"
+        Me.lbl_Birth.AutoSize = True
+        Me.lbl_Birth.Enabled = False
+        Me.lbl_Birth.Location = New System.Drawing.Point(692, 70)
+        Me.lbl_Birth.Name = "lbl_Birth"
+        Me.lbl_Birth.Size = New System.Drawing.Size(73, 15)
+        Me.lbl_Birth.TabIndex = 9
+        Me.lbl_Birth.Text = "Date of Birth"
         '
-        'Label3
+        'lbl_Email
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(695, 99)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(36, 15)
-        Me.Label3.TabIndex = 10
-        Me.Label3.Text = "Email"
+        Me.lbl_Email.AutoSize = True
+        Me.lbl_Email.Enabled = False
+        Me.lbl_Email.Location = New System.Drawing.Point(695, 99)
+        Me.lbl_Email.Name = "lbl_Email"
+        Me.lbl_Email.Size = New System.Drawing.Size(36, 15)
+        Me.lbl_Email.TabIndex = 10
+        Me.lbl_Email.Text = "Email"
         '
-        'Label4
+        'lbl_Address
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(692, 128)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(85, 15)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Home Address"
+        Me.lbl_Address.AutoSize = True
+        Me.lbl_Address.Enabled = False
+        Me.lbl_Address.Location = New System.Drawing.Point(692, 128)
+        Me.lbl_Address.Name = "lbl_Address"
+        Me.lbl_Address.Size = New System.Drawing.Size(85, 15)
+        Me.lbl_Address.TabIndex = 11
+        Me.lbl_Address.Text = "Home Address"
         '
-        'Label5
+        'lbl_Search
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(690, 225)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(42, 15)
-        Me.Label5.TabIndex = 12
-        Me.Label5.Text = "Search"
+        Me.lbl_Search.AutoSize = True
+        Me.lbl_Search.Enabled = False
+        Me.lbl_Search.Location = New System.Drawing.Point(690, 225)
+        Me.lbl_Search.Name = "lbl_Search"
+        Me.lbl_Search.Size = New System.Drawing.Size(42, 15)
+        Me.lbl_Search.TabIndex = 12
+        Me.lbl_Search.Text = "Search"
         '
         'TextBox_Filter
         '
+        Me.TextBox_Filter.Enabled = False
         Me.TextBox_Filter.Location = New System.Drawing.Point(837, 225)
         Me.TextBox_Filter.Name = "TextBox_Filter"
         Me.TextBox_Filter.Size = New System.Drawing.Size(100, 23)
         Me.TextBox_Filter.TabIndex = 13
         '
-        'Button3
+        'exportBtn
         '
-        Me.Button3.Location = New System.Drawing.Point(862, 405)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 14
-        Me.Button3.Text = "Export"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.exportBtn.Enabled = False
+        Me.exportBtn.Location = New System.Drawing.Point(862, 405)
+        Me.exportBtn.Name = "exportBtn"
+        Me.exportBtn.Size = New System.Drawing.Size(75, 23)
+        Me.exportBtn.TabIndex = 14
+        Me.exportBtn.Text = "Export"
+        Me.exportBtn.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(949, 475)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.exportBtn)
         Me.Controls.Add(Me.TextBox_Filter)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lbl_Search)
+        Me.Controls.Add(Me.lbl_Address)
+        Me.Controls.Add(Me.lbl_Email)
+        Me.Controls.Add(Me.lbl_Birth)
+        Me.Controls.Add(Me.lbl_Name)
         Me.Controls.Add(Me.TextBox_Address)
         Me.Controls.Add(Me.TextBox_Email)
         Me.Controls.Add(Me.date_of_Birth)
@@ -217,11 +229,11 @@ Partial Class Form1
     Friend WithEvents date_of_Birth As DateTimePicker
     Friend WithEvents TextBox_Email As TextBox
     Friend WithEvents TextBox_Address As TextBox
-    Friend WithEvents Label1 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lbl_Name As Label
+    Friend WithEvents lbl_Birth As Label
+    Friend WithEvents lbl_Email As Label
+    Friend WithEvents lbl_Address As Label
+    Friend WithEvents lbl_Search As Label
     Friend WithEvents TextBox_Filter As TextBox
-    Friend WithEvents Button3 As Button
+    Friend WithEvents exportBtn As Button
 End Class
