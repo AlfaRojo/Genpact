@@ -1,6 +1,5 @@
 ﻿Imports System.IO
 Imports System.Text.RegularExpressions
-Imports System.Data
 
 Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -12,21 +11,20 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Using ofd As OpenFileDialog = New OpenFileDialog()
             If ofd.ShowDialog() = DialogResult.OK Then
-                DataGridView1.Rows.Clear()
-                DataGridView1.Columns.Clear()
+                DataGrid_DB.Rows.Clear()
+                DataGrid_DB.Columns.Clear()
                 enable_Elements()
                 file_path.Text = ofd.FileName
-                Dim lines As List(Of String) = File.ReadAllLines(ofd.FileName).ToList()
-                Dim list As List(Of User) = New List(Of User)
-                fill_Columns(lines)
-                For i As Integer = 1 To lines.Count - 1
-                    Dim data As String() = lines(i).Split(",")
+                Dim fLines As List(Of String) = File.ReadAllLines(ofd.FileName).ToList()
+                fill_Columns(fLines)
+                For i As Integer = 1 To fLines.Count - 1
+                    Dim sData As String() = fLines(i).Split(",")
                     addElements(
-                    data(0),
-                    data(1),
-                    data(2),
-                    data(3),
-                    data(4)
+                    sData(0),
+                    sData(1),
+                    sData(2),
+                    sData(3),
+                    sData(4)
                 )
                 Next
             End If
@@ -54,7 +52,7 @@ Public Class Form1
         ElseIf Name = "" Then
             MsgBox("You dont have name? Please complete the name field")
         Else
-            DataGridView1.Rows.Add(
+            DataGrid_DB.Rows.Add(
                 Code,
                 Name,
                 Birth.ToString,
@@ -65,19 +63,19 @@ Public Class Form1
     End Sub
 
     Private Sub fill_Columns(lines As List(Of String))
-        Dim columns() As String = lines(0).Split(",")
-        For Each item In columns
+        Dim sColumns() As String = lines(0).Split(",")
+        For Each item In sColumns
             Dim col As New DataGridViewTextBoxColumn
             col.HeaderText = item
             col.Name = item
             col.DataPropertyName = item
-            DataGridView1.Columns.Add(col)
+            DataGrid_DB.Columns.Add(col)
         Next
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles addBtn.Click
         addElements(
-            (DataGridView1.Rows.Count).ToString,
+            (DataGrid_DB.Rows.Count).ToString,
             TextBox_Name.Text,
             date_of_Birth.Value,
             TextBox_Email.Text,
@@ -86,7 +84,7 @@ Public Class Form1
         Using fileWriter As New System.IO.StreamWriter(file_path.Text, True)
             fileWriter.WriteLineAsync(String.Join(
                 ",",
-                (DataGridView1.Rows.Count - 1),
+                (DataGrid_DB.Rows.Count - 1),
                 TextBox_Name.Text,
                 date_of_Birth.Value,
                 TextBox_Email.Text,
@@ -97,32 +95,29 @@ Public Class Form1
     End Sub
 
     Function isEmail(ByVal email As String) As Boolean
-        'Static emailRegex As New Regex("^[_a-z0-9-]+(.[a-z0-9-]+)@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")
-        'Dim isMail As Boolean = emailRegex.IsMatch(email)
         Dim regex As Regex = New Regex("^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$")
-        Dim isValid As Boolean = regex.IsMatch(email)
         Return regex.IsMatch(email)
     End Function
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox_Filter.TextChanged
-        Dim lines() As String = IO.File.ReadAllLines(file_path.Text).ToArray
+        Dim fLines() As String = IO.File.ReadAllLines(file_path.Text).ToArray
 
-        DataGridView1.Rows.Clear()
+        DataGrid_DB.Rows.Clear()
 
-        For Each line As String In lines
-            If Not line.Split(",")(0).Equals("Code") Then
+        For Each sLine As String In fLines
+            If Not sLine.Split(",")(0).Equals("Code") Then
                 If Not TextBox_Filter.Text.Equals("") Then
                     If Integer.TryParse(TextBox_Filter.Text, New Integer) < 0 Then
-                        If Integer.Parse(line.Split(",")(0)) = Integer.Parse(TextBox_Filter.Text) Then
-                            DataGridView1.Rows.Add(line.Split(","c))
+                        If Integer.Parse(sLine.Split(",")(0)) = Integer.Parse(TextBox_Filter.Text) Then
+                            DataGrid_DB.Rows.Add(sLine.Split(","c))
                         End If
                     Else
-                        If line.Split(",")(1).Contains(TextBox_Filter.Text) Then
-                            DataGridView1.Rows.Add(line.Split(","c))
+                        If sLine.Split(",")(1).Contains(TextBox_Filter.Text) Then
+                            DataGrid_DB.Rows.Add(sLine.Split(","c))
                         End If
                     End If
                 Else
-                    DataGridView1.Rows.Add(line.Split(","c))
+                    DataGrid_DB.Rows.Add(sLine.Split(","c))
                 End If
             End If
         Next

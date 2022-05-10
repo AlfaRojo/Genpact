@@ -25,7 +25,7 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.file_path = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DataGrid_DB = New System.Windows.Forms.DataGridView()
         Me.addBtn = New System.Windows.Forms.Button()
         Me.TextBox_Name = New System.Windows.Forms.TextBox()
         Me.date_of_Birth = New System.Windows.Forms.DateTimePicker()
@@ -38,7 +38,7 @@ Partial Class Form1
         Me.lbl_Search = New System.Windows.Forms.Label()
         Me.TextBox_Filter = New System.Windows.Forms.TextBox()
         Me.exportBtn = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGrid_DB, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -62,17 +62,17 @@ Partial Class Form1
         Me.file_path.Size = New System.Drawing.Size(0, 15)
         Me.file_path.TabIndex = 1
         '
-        'DataGridView1
+        'DataGrid_DB
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 41)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowTemplate.Height = 25
-        Me.DataGridView1.Size = New System.Drawing.Size(674, 387)
-        Me.DataGridView1.TabIndex = 2
+        Me.DataGrid_DB.AllowUserToAddRows = False
+        Me.DataGrid_DB.AllowUserToDeleteRows = False
+        Me.DataGrid_DB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGrid_DB.Location = New System.Drawing.Point(12, 41)
+        Me.DataGrid_DB.Name = "DataGrid_DB"
+        Me.DataGrid_DB.ReadOnly = True
+        Me.DataGrid_DB.RowTemplate.Height = 25
+        Me.DataGrid_DB.Size = New System.Drawing.Size(674, 387)
+        Me.DataGrid_DB.TabIndex = 2
         '
         'addBtn
         '
@@ -208,13 +208,13 @@ Partial Class Form1
         Me.Controls.Add(Me.date_of_Birth)
         Me.Controls.Add(Me.TextBox_Name)
         Me.Controls.Add(Me.addBtn)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DataGrid_DB)
         Me.Controls.Add(Me.file_path)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Visual Basic Application"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGrid_DB, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -223,7 +223,7 @@ Partial Class Form1
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Button1 As Button
     Friend WithEvents file_path As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DataGrid_DB As DataGridView
     Friend WithEvents addBtn As Button
     Friend WithEvents TextBox_Name As TextBox
     Friend WithEvents date_of_Birth As DateTimePicker

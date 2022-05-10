@@ -37,28 +37,28 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim exportList As List(Of String) = New List(Of String)
         If rangeBtn.Checked Then
-            Dim min As Integer = Integer.Parse(TextBox_Main.Text)
-            Dim max As Integer = Integer.Parse(TextBox_Second.Text)
-            If min > max Then
+            Dim iMin As Integer = Integer.Parse(TextBox_Main.Text)
+            Dim iMax As Integer = Integer.Parse(TextBox_Second.Text)
+            If iMin > iMax Then
                 MsgBox("Min value must be lower than the max value.")
                 Return
             End If
-            Dim lines() = IO.File.ReadAllLines(Me.Tag.ToString).ToArray
-            For Each match In lines
-                If Not match.Split(",")(0).Equals("Code") Then
-                    Dim value As Integer = match.Split(",")(0)
-                    If value >= min And value <= max Then
-                        exportList.Add(match)
+            Dim fLines() = IO.File.ReadAllLines(Me.Tag.ToString).ToArray
+            For Each sMatch In fLines
+                If Not sMatch.Split(",")(0).Equals("Code") Then
+                    Dim value As Integer = sMatch.Split(",")(0)
+                    If value >= iMin And value <= iMax Then
+                        exportList.Add(sMatch)
                     End If
                 End If
             Next
 
         ElseIf nameBtn.Checked Then 'This is not needed, since rangeBtn is not checked, that means nameBtn will be checked
-            Dim lines() = IO.File.ReadAllLines(Me.Tag.ToString).Where(Function(x) (x.Split(",")(1).ToLower.Contains(TextBox_Main.Text))).ToArray
+            Dim fLines() = IO.File.ReadAllLines(Me.Tag.ToString).Where(Function(x) (x.Split(",")(1).ToLower.Contains(TextBox_Main.Text))).ToArray
 
-            For Each match In lines
-                If Not match.Split(",")(0).Equals("Code") Then
-                    exportList.Add(match)
+            For Each Smatch In fLines
+                If Not Smatch.Split(",")(0).Equals("Code") Then
+                    exportList.Add(Smatch)
                 End If
             Next
         End If
