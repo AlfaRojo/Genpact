@@ -1,0 +1,8 @@
+Sub UnhideRows()
+    'Dont update the screen until the macro finish
+    Application.ScreenUpdating = False
+    
+    ActiveSheet.Cells.EntireRow.Hidden = False
+    
+    Application.ScreenUpdating = True
+End Sub
