@@ -83,10 +83,6 @@ Public Class Form1
             If Not line.Split(",")(0).Equals("Code") Then
                 If Not TextBox_Filter.Text.Equals("") Then
                     If Integer.TryParse(TextBox_Filter.Text, New Integer) < 0 Then
-                        Dim num As VariantType = Integer.Parse(line.Split(",")(0))
-                        Dim value As VariantType = Integer.Parse(TextBox_Filter.Text)
-                        Dim booleanTR As VariantType = Integer.Parse(line.Split(",")(0)) = Integer.Parse(TextBox_Filter.Text)
-                        Dim booleanNum As VariantType = line.Split(",")(1).Contains(TextBox_Filter.Text)
                         If Integer.Parse(line.Split(",")(0)) = Integer.Parse(TextBox_Filter.Text) Then
                             DataGridView1.Rows.Add(line.Split(","c))
                         End If
@@ -100,5 +96,11 @@ Public Class Form1
                 End If
             End If
         Next
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim exportForm = New Export()
+        exportForm.Tag = file_path.Text
+        exportForm.Show()
     End Sub
 End Class

@@ -51,7 +51,7 @@ Partial Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Abrir"
+        Me.Button1.Text = "Open"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'file_path
@@ -161,7 +161,7 @@ Partial Class Form1
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(42, 15)
         Me.Label5.TabIndex = 12
-        Me.Label5.Text = "Buscar"
+        Me.Label5.Text = "Search"
         '
         'TextBox_Filter
         '
